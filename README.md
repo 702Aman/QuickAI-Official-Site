@@ -79,8 +79,8 @@ Edit CSS variables in `css/styles.css`:
 
 Update these links in `index.html`:
 
-- Chrome Web Store URL (search for `[chrome.google.com/webstore](https://chromewebstore.google.com/detail/quickai/pglbifcfjpidnmjnkjkghbkiihmjgfjg)`)
-- GitHub repository URL (search for `github.com/user/quickai`)
+- Chrome Web Store URL (search for `https://chromewebstore.google.com/detail/quickai/pglbifcfjpidnmjnkjkghbkiihmjgfjg`)
+- Website URL (search for `https://quickai-website.vercel.app/`)
 
 ## 📱 Browser Support
 
