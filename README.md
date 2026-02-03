@@ -11,6 +11,10 @@ A modern, responsive, production-ready landing website for the QuickAI Chrome ex
 - **Accessible** with keyboard navigation support
 - **No backend required** - static files only
 
+## 📸 Screenshots
+
+![Website UI](assets/QUICKAISITE.png)
+
 ## 📁 Project Structure
 
 ```
