@@ -13,9 +13,83 @@
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
+    const themeToggle = document.getElementById('themeToggle');
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     const copyButtons = document.querySelectorAll('.copy-btn');
+
+    // =========================================
+    // Theme Management
+    // =========================================
+    
+    // Get theme from localStorage or system preference
+    function getPreferredTheme() {
+        const savedTheme = localStorage.getItem('quickai-theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    
+    // Apply theme to document
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('quickai-theme', theme);
+    }
+    
+    // Toggle theme
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        
+        // Add animation class
+        if (themeToggle) {
+            themeToggle.classList.add('toggling');
+            setTimeout(() => {
+                themeToggle.classList.remove('toggling');
+            }, 400);
+        }
+    }
+    
+    // Initialize theme on page load
+    applyTheme(getPreferredTheme());
+    
+    // Theme toggle button
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('quickai-theme')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
+    // Logo click - smooth scroll to top
+    const logo = document.querySelector('.nav-logo');
+    const footerLogo = document.querySelector('.footer-logo');
+    
+    if (logo) {
+        logo.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    if (footerLogo) {
+        footerLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // =========================================
     // Navigation
